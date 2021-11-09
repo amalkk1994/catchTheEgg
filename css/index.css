@@ -1,0 +1,19 @@
+#egg {
+  height: 100px;
+  width: 100px;
+  background-color: yellow;
+  border-radius: 50%;
+  border: solid 1px black;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+#box {
+  height: 120px;
+  width: 120px;
+  background-color: red;
+  border: solid 2px black;
+  position: absolute;
+  top: 760px;
+}
