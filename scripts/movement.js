@@ -1,6 +1,7 @@
 let egg = document.getElementById('egg');
 let box = document.getElementById('box');
 let isMoving = false;
+let isPaused = false;
 
 egg.addEventListener('mousedown',initialClick)
 document.addEventListener('dblclick',freeFall)
@@ -42,7 +43,7 @@ function freeFall(e){
             console.log('Catch!!!!');
         }
         */
-        if (posY > 1000) {
+        if (posY > 780) {
             posY = 50;
             egg.style.top = posY + "px";
             clearInterval(refershId);
@@ -54,11 +55,28 @@ function freeFall(e){
     let boxPosX = 0;
     console.log("inside move Box");
     setInterval(function(){
-
+        console.log('isPAused', isPaused)
+        if(isPaused) {
+            setTimeout(() => 
+            {
+                isPaused = false;
+                box.style.backgroundColor = 'red';
+            }, 1000)
+        }
+        if (!isPaused){
         currBoxPos = box.getBoundingClientRect();
         currEggPos = egg.getBoundingClientRect();
-        if(currEggPos.left == currBoxPos.left){
+        if((currEggPos.left >= currBoxPos.left && currEggPos.right <= currBoxPos.right) && (currEggPos.top >= currBoxPos.top && currEggPos.bottom <= currBoxPos.bottom)){
             console.log('Catch!!!!');
+            let score = document.getElementById('score');
+            console.log('score, score')
+            let points = Number(score.innerHTML);
+            console.log('points', points);
+            points = points + 1;
+            score.innerHTML = points;
+            console.log('new score', score);
+            isPaused = true;
+            box.style.backgroundColor = 'yellow';
         }
 
         if (boxPosX < 1800 ) {
@@ -67,5 +85,6 @@ function freeFall(e){
             boxPosX = 0;
         }
         box.style.left = boxPosX + "px";
+    }
     },20)
 //}

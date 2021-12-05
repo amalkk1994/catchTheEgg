@@ -2,6 +2,10 @@
   height: 100px;
   width: 100px;
   background-color: yellow;
+  background-image: url("../images/aapath.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   border-radius: 50%;
   border: solid 1px black;
   position: absolute;
@@ -11,7 +15,7 @@
 
 #box {
   height: 120px;
-  width: 120px;
+  width: 140px;
   background-color: red;
   border: solid 2px black;
   position: absolute;
